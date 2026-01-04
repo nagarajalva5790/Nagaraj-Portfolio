@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Nagaraj Alva - Senior Full-Stack Portfolio
 
-# Run and deploy your AI Studio app
+Professional, high-performance developer portfolio built with React 19, TypeScript, and Framer Motion. Featuring an AI-powered assistant powered by Gemini 3 Pro.
 
-This contains everything you need to run your app locally.
+## 🚀 Deployment Guide (GitHub Pages)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1marWh5rocwxw8ELUMiS3_O5qA1MMvBOy
+### 1. Repository Setup
+1. Create a new repository on GitHub named `portfolio` (or your preferred name).
+2. Initialize git and push your code:
+   ```bash
+   git init
+   git remote add origin https://github.com/USERNAME/REPO_NAME.git
+   git add .
+   git commit -m "Initial commit"
+   git push -u origin main
+   ```
 
-## Run Locally
+### 2. Configure Environment Variables
+The AI Chatbot requires an API Key. For GitHub Pages, you can use **GitHub Actions** to inject the `API_KEY` during the build process:
+1. Go to your Repo **Settings > Secrets and variables > Actions**.
+2. Add a new Repository Secret named `API_KEY` with your Google Gemini API key.
 
-**Prerequisites:**  Node.js
+### 3. Deploy
+Run the following command to deploy automatically:
+```bash
+npm run deploy
+```
 
+## 🛠 Tech Stack
+- **Frontend:** React 19 (ESM Native), TypeScript
+- **Styling:** Tailwind CSS (Modern Glassmorphism theme)
+- **Animations:** Framer Motion
+- **AI:** Google Generative AI (Gemini 3 Pro)
+- **Deployment:** GitHub Pages / Vercel
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📄 License
+This project is private and intended for Nagaraj Alva's personal professional use.
