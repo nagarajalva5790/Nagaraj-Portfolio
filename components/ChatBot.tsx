@@ -1,8 +1,10 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleGenAI } from '@google/genai';
 import { PERSONAL_INFO, SKILL_GROUPS, EXPERIENCES, EDUCATION, AWARDS } from '../constants';
+
+// Accessing API Key safely for Vite
+const API_KEY = (import.meta as any).env?.VITE_API_KEY || "";
 
 const SYSTEM_INSTRUCTION = `
 You are the AI Personal Assistant for Nagaraj Ramanath Alva. Your goal is to help visitors (recruiters, clients, or fellow developers) learn about Nagaraj's career.
@@ -50,7 +52,7 @@ export const ChatBot: React.FC = () => {
 
   const initChat = () => {
     if (!chatRef.current) {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      const ai = new GoogleGenAI({ apiKey: API_KEY });
       chatRef.current = ai.chats.create({
         model: 'gemini-3-pro-preview',
         config: {
@@ -63,6 +65,10 @@ export const ChatBot: React.FC = () => {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
+    if (!API_KEY) {
+        setMessages(prev => [...prev, { role: 'model', text: "AI Assistant is currently offline (API Key not configured). Please contact Nagaraj directly." }]);
+        return;
+    }
 
     const userMessage = input.trim();
     setInput('');
